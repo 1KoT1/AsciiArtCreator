@@ -21,6 +21,12 @@ public:
 	const QString & asciiArt() const;
 	/** Задать результат вычислений.*/
 	void setAsciiArt(const QString art);
+
+	/** Ширина результата в символах */
+	int asciiArtWight() const;
+
+	const QChar & whiteChar() const;
+	const QChar & blackChar() const;
 signals:
 	void imageChanged();
 	void asciiArtChanged();
@@ -31,6 +37,7 @@ private:
 	QString m_asciiArt;
 	QChar m_whiteChar;
 	QChar m_blackChar;
+	int m_AsciiArtWight;
 };
 
 #endif // MODEL_H
