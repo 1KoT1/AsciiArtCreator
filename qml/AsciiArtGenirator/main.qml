@@ -1,11 +1,12 @@
 import QtQuick 2.0
-import QtQuick.Layouts 1.0
+import QtQuick.Controls 1.0
 
 Rectangle {
     width: 800
     height: 600
 
-    Text {
+
+    ScrollView {
         id: asciiResult
         anchors.left: parent.horizontalCenter
         anchors.leftMargin: 2
@@ -13,9 +14,12 @@ Rectangle {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 50
-        text: gameModel.asciiArt;
-        wrapMode: Text.WrapAnywhere
-        font.pixelSize: 12
+        TextEdit {
+            text: gameModel.asciiArt;
+            wrapMode: Text.WrapAnywhere
+            font.pixelSize: 12
+            selectByMouse: true
+        }
     }
 
     Image{
@@ -33,6 +37,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.top: inputImage.bottom
         anchors.topMargin: 5
+        selectByMouse: true
         text: gameModel.image
     }
 }
