@@ -34,10 +34,34 @@ Rectangle {
     }
 
     TextInput{
+        id: address
         anchors.left: parent.left
         anchors.top: inputImage.bottom
         anchors.topMargin: 5
         selectByMouse: true
         text: gameModel.image
+    }
+
+    Row{
+        anchors.left: address.right
+        anchors.leftMargin: 5
+        anchors.top: inputImage.bottom
+        anchors.topMargin: 5
+        spacing: 5
+        Text { text: qsTr("Белый символ") }
+        TextInput{ text: gameModel.whiteChar
+            onAccepted: {
+                controller.setWhiteChar(text);
+                controller.calcAsciiArt();
+            }
+        }
+        Text { text: qsTr("Чёрный символ") }
+        TextInput{
+            text: gameModel.blackChar
+            onAccepted: {
+                controller.setBlackChar(text);
+                controller.calcAsciiArt();
+            }
+        }
     }
 }

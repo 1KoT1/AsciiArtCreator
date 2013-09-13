@@ -12,6 +12,10 @@ public:
 	explicit Controller(Model *model, QObject *parent = 0);
 	
 	Q_INVOKABLE void calcAsciiArt();
+
+
+	Q_INVOKABLE void setWhiteChar(const QString &ch);
+	Q_INVOKABLE void setBlackChar(const QString &ch);
 signals:
 	
 public slots:

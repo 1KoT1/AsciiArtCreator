@@ -4,8 +4,8 @@
 Model::Model(QObject *parent) :
 	QObject(parent),
 	m_image("AsciiArtGenirator80.png"),
-	m_whiteChar('@'),
-	m_blackChar('_'),
+	m_whiteChar('_'),
+	m_blackChar('@'),
 	m_AsciiArtWight(80)
 {
 }
@@ -38,6 +38,20 @@ int Model::asciiArtWight() const{
 
 const QChar &Model::whiteChar() const{
 	return m_whiteChar;
+}
+
+void Model::setWhiteChar(const QChar &ch){
+	if(ch != m_whiteChar){
+		m_whiteChar = ch;
+		emit whiteCharChanged();
+	}
+}
+
+void Model::setBlackChar(const QChar &ch){
+	if(ch != m_blackChar){
+		m_blackChar = ch;
+		emit blackCharChanged();
+	}
 }
 
 const QChar &Model::blackChar() const{

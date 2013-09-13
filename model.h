@@ -8,6 +8,8 @@ class Model : public QObject
 	Q_OBJECT
 	Q_PROPERTY(QString image READ image NOTIFY imageChanged)
 	Q_PROPERTY(QString asciiArt READ asciiArt NOTIFY asciiArtChanged)
+	Q_PROPERTY(QString whiteChar READ whiteChar NOTIFY whiteCharChanged)
+	Q_PROPERTY(QString blackChar READ blackChar NOTIFY blackCharChanged)
 
 public:
 	explicit Model(QObject *parent = 0);
@@ -26,11 +28,15 @@ public:
 	int asciiArtWight() const;
 
 	const QChar & whiteChar() const;
+	void setWhiteChar(const QChar & ch);
 	const QChar & blackChar() const;
+	void setBlackChar(const QChar &ch);
 signals:
 	void imageChanged();
 	void asciiArtChanged();
-	
+	void whiteCharChanged();
+	void blackCharChanged();
+
 public slots:
 private:
 	QString m_image;
