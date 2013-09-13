@@ -17,6 +17,10 @@ public:
 	Q_INVOKABLE void setWhiteChar(const QString &ch);
 	Q_INVOKABLE void setBlackChar(const QString &ch);
 	Q_INVOKABLE void setAsciiArtWight(const QString w);
+	/** Задать адрес файла картинки.*/
+	Q_INVOKABLE void setImage(const QString img);
+	/** Выбрать файл картинки.*/
+	Q_INVOKABLE void setImage();
 signals:
 	
 public slots:

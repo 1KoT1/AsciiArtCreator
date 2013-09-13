@@ -33,21 +33,32 @@ Rectangle {
         source: gameModel.image
     }
 
-    TextInput{
-        id: address
-        anchors.left: parent.left
-        anchors.top: inputImage.bottom
-        anchors.topMargin: 5
-        selectByMouse: true
-        text: gameModel.image
-    }
 
     Row{
-        anchors.left: address.right
+        anchors.left: parent.left
         anchors.leftMargin: 5
         anchors.top: inputImage.bottom
         anchors.topMargin: 5
         spacing: 5
+
+        TextInput{
+            id: address
+            selectByMouse: true
+            text: gameModel.image
+            onAccepted: {
+                controller.setImage(text);
+                controller.calcAsciiArt();
+            }
+        }
+
+        Button{
+            text: qsTr("Выбрать файл.")
+            onClicked:{
+                controller.setImage();
+                controller.calcAsciiArt();
+            }
+        }
+
         Text { text: qsTr("Белый символ") }
         TextInput{ text: gameModel.whiteChar
             selectByMouse: true

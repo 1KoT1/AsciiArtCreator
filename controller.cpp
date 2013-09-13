@@ -3,6 +3,8 @@
 #include <QImage>
 #include <QBitmap>
 #include <QDebug>
+#include <QFileDialog>
+#include <QApplication>
 
 Controller::Controller(Model * model, QObject *parent) :
 	QObject(parent),
@@ -52,4 +54,17 @@ void Controller::setAsciiArtWight(const QString w){
 	auto res = w.toInt(&ok);
 	if(ok)
 		m_model->setAasciiArtWight(res);
+}
+
+void Controller::setImage(const QString img){
+	m_model->setImage(img);
+}
+
+void Controller::setImage()
+{
+	auto fileName = QFileDialog::getOpenFileName(QApplication::activeWindow (),
+			trUtf8("Открыть изображение"), "", trUtf8("Изображения (*.png *.jpg *.bmp)"));
+	if(fileName.isNull())
+		return;
+	setImage(fileName);
 }

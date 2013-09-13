@@ -1,4 +1,4 @@
-#include <QtGui/QGuiApplication>
+#include <QApplication>
 #include <QQmlContext>
 #include "qtquick2applicationviewer.h"
 #include "model.h"
@@ -6,7 +6,7 @@
 
 int main(int argc, char *argv[])
 {
-    QGuiApplication app(argc, argv);
+		QApplication app(argc, argv);
 
 		QtQuick2ApplicationViewer viewer;
 		auto model = new Model(&app);
