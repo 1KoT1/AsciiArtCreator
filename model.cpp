@@ -36,6 +36,13 @@ int Model::asciiArtWight() const{
 	return m_AsciiArtWight;
 }
 
+void Model::setAasciiArtWight(int w){
+	if(w != m_AsciiArtWight){
+		m_AsciiArtWight = w;
+		emit asciiArtWightChanged();
+	}
+}
+
 const QChar &Model::whiteChar() const{
 	return m_whiteChar;
 }

@@ -10,6 +10,7 @@ class Model : public QObject
 	Q_PROPERTY(QString asciiArt READ asciiArt NOTIFY asciiArtChanged)
 	Q_PROPERTY(QString whiteChar READ whiteChar NOTIFY whiteCharChanged)
 	Q_PROPERTY(QString blackChar READ blackChar NOTIFY blackCharChanged)
+	Q_PROPERTY(int asciiArtWight READ asciiArtWight NOTIFY asciiArtWightChanged)
 
 public:
 	explicit Model(QObject *parent = 0);
@@ -26,6 +27,7 @@ public:
 
 	/** Ширина результата в символах */
 	int asciiArtWight() const;
+	void setAasciiArtWight(int w);
 
 	const QChar & whiteChar() const;
 	void setWhiteChar(const QChar & ch);
@@ -36,6 +38,7 @@ signals:
 	void asciiArtChanged();
 	void whiteCharChanged();
 	void blackCharChanged();
+	void asciiArtWightChanged();
 
 public slots:
 private:

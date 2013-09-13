@@ -46,3 +46,10 @@ void Controller::setBlackChar(const QString &str){
 		return;
 	m_model->setBlackChar(ch);
 }
+
+void Controller::setAsciiArtWight(const QString w){
+	bool ok;
+	auto res = w.toInt(&ok);
+	if(ok)
+		m_model->setAasciiArtWight(res);
+}

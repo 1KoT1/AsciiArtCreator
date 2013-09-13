@@ -50,6 +50,7 @@ Rectangle {
         spacing: 5
         Text { text: qsTr("Белый символ") }
         TextInput{ text: gameModel.whiteChar
+            selectByMouse: true
             onAccepted: {
                 controller.setWhiteChar(text);
                 controller.calcAsciiArt();
@@ -58,8 +59,18 @@ Rectangle {
         Text { text: qsTr("Чёрный символ") }
         TextInput{
             text: gameModel.blackChar
+            selectByMouse: true
             onAccepted: {
                 controller.setBlackChar(text);
+                controller.calcAsciiArt();
+            }
+        }
+        Text { text: qsTr("Ширина в символах") }
+        TextInput{
+            text: gameModel.asciiArtWight
+            selectByMouse: true
+            onAccepted: {
+                controller.setAsciiArtWight(text);
                 controller.calcAsciiArt();
             }
         }
