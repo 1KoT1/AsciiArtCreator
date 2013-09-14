@@ -39,50 +39,61 @@ Rectangle {
         anchors.leftMargin: 5
         anchors.top: inputImage.bottom
         anchors.topMargin: 5
-        spacing: 5
+        spacing: 15
 
-        TextInput{
-            id: address
-            selectByMouse: true
-            text: gameModel.image
-            onAccepted: {
-                controller.setImage(text);
-                controller.calcAsciiArt();
+        Row{
+            spacing: 3
+            MyTextInput{
+                id: address
+                text: gameModel.image
+                onAccepted: {
+                    controller.setImage(text);
+                    controller.calcAsciiArt();
+                }
+            }
+
+            Button{
+                text: qsTr("Выбрать файл.")
+                onClicked:{
+                    controller.setImage();
+                    controller.calcAsciiArt();
+                }
             }
         }
 
-        Button{
-            text: qsTr("Выбрать файл.")
-            onClicked:{
-                controller.setImage();
-                controller.calcAsciiArt();
+        Row{
+            spacing: 3
+            Text { text: qsTr("Белый символ") }
+            MyTextInput{
+                text: gameModel.whiteChar
+                onAccepted: {
+                    controller.setWhiteChar(text);
+                    controller.calcAsciiArt();
+                }
             }
         }
 
-        Text { text: qsTr("Белый символ") }
-        TextInput{ text: gameModel.whiteChar
-            selectByMouse: true
-            onAccepted: {
-                controller.setWhiteChar(text);
-                controller.calcAsciiArt();
+        Row{
+            spacing: 3
+            Text { text: qsTr("Чёрный символ") }
+            MyTextInput{
+                text: gameModel.blackChar
+                onAccepted: {
+                    controller.setBlackChar(text);
+                    controller.calcAsciiArt();
+                }
             }
         }
-        Text { text: qsTr("Чёрный символ") }
-        TextInput{
-            text: gameModel.blackChar
-            selectByMouse: true
-            onAccepted: {
-                controller.setBlackChar(text);
-                controller.calcAsciiArt();
-            }
-        }
-        Text { text: qsTr("Ширина в символах") }
-        TextInput{
-            text: gameModel.asciiArtWight
-            selectByMouse: true
-            onAccepted: {
-                controller.setAsciiArtWight(text);
-                controller.calcAsciiArt();
+
+        Row{
+            spacing: 3
+            Text { text: qsTr("Ширина в символах") }
+            MyTextInput{
+                text: gameModel.asciiArtWight
+                onAccepted: {
+                    controller.setAsciiArtWight(text);
+                    controller.calcAsciiArt();
+                }
             }
         }
     }

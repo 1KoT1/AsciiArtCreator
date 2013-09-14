@@ -29,3 +29,5 @@ qtcAddDeployment()
 HEADERS += \
     model.h \
     controller.h
+
+OTHER_FILES +=

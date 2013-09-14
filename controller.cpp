@@ -25,7 +25,7 @@ void Controller::calcAsciiArt(){
 		} else {
 			res.append(m_model->whiteChar());
 		}
-		if(i % m_model->asciiArtWight() == 0)
+		if(i && i % m_model->asciiArtWight() == 0)
 			res.append('\n');
 	}
 	m_model->setAsciiArt(res);
