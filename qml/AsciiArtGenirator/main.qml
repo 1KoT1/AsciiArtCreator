@@ -43,15 +43,12 @@ Rectangle {
 
         Row{
             spacing: 3
-            MyTextInput{
-                id: address
-                text: gameModel.image
-                onAccepted: {
-                    controller.setImage(text);
-                    controller.calcAsciiArt();
-                }
-            }
 
+            TextField {
+                id: address
+                width: inputImage.width
+                text: gameModel.image
+            }
             Button{
                 text: qsTr("Выбрать файл.")
                 onClicked:{
@@ -64,7 +61,8 @@ Rectangle {
         Row{
             spacing: 3
             Text { text: qsTr("Белый символ") }
-            MyTextInput{
+            TextField {
+                width: 20
                 text: gameModel.whiteChar
                 onAccepted: {
                     controller.setWhiteChar(text);
@@ -76,7 +74,8 @@ Rectangle {
         Row{
             spacing: 3
             Text { text: qsTr("Чёрный символ") }
-            MyTextInput{
+            TextField{
+                width: 20
                 text: gameModel.blackChar
                 onAccepted: {
                     controller.setBlackChar(text);
@@ -88,7 +87,8 @@ Rectangle {
         Row{
             spacing: 3
             Text { text: qsTr("Ширина в символах") }
-            MyTextInput{
+            TextField{
+                width: 50
                 text: gameModel.asciiArtWight
                 onAccepted: {
                     controller.setAsciiArtWight(text);
