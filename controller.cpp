@@ -14,9 +14,9 @@ Controller::Controller(Model * model, QObject *parent) :
 
 void Controller::calcAsciiArt(){
 	QImage inputImg(m_model->image());
-	auto w = qRgb(255, 255, 255);
-	auto b = qRgb(0, 0, 0);
-	auto img = inputImg.scaled(m_model->asciiArtWight(), m_model->asciiArtWight() * (float)inputImg.height() / inputImg.width()).convertToFormat(QImage::Format_Indexed8, {w, b});
+    if(inputImg.isNull())
+        return;
+    auto img = inputImg.scaled(m_model->asciiArtWight(), m_model->asciiArtWight() * (float)inputImg.height() / inputImg.width()).convertToFormat(QImage::Format_Indexed8, {qRgb(255, 255, 255), qRgb(0, 0, 0)});
 	auto imgData = img.constBits();
 	QString res;
 	for (int i = 0; i < img.byteCount(); ++i) {
