@@ -3,7 +3,7 @@
 
 Model::Model(QObject *parent) :
 	QObject(parent),
-	m_image("AsciiArtGenirator80.png"),
+	m_image(qApp->applicationDirPath() + "/qml/AsciiArtGenirator/AsciiArtGenirator80.png"),
 	m_whiteChar('_'),
 	m_blackChar('@'),
 	m_AsciiArtWight(80)
