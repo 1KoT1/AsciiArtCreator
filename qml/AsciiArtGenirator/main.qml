@@ -13,7 +13,7 @@ Rectangle {
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 50
+        anchors.bottomMargin: 100
         TextEdit {
             text: gameModel.asciiArt;
             wrapMode: Text.WrapAnywhere
@@ -29,16 +29,16 @@ Rectangle {
         anchors.right: parent.horizontalCenter
         anchors.rightMargin: 2
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 50
+        anchors.bottomMargin: 100
         source: gameModel.image
     }
 
-
-    Row{
+    Flow{
         anchors.left: parent.left
         anchors.leftMargin: 5
         anchors.top: inputImage.bottom
         anchors.topMargin: 5
+        anchors.right: parent.right
         spacing: 15
 
         Row{
