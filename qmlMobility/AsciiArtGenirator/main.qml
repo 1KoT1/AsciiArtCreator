@@ -21,18 +21,15 @@ Rectangle {
         }
     }
 
-    ScrollView {
+    TextArea {
         id: asciiResult
         anchors.left: parent.horizontalCenter
         anchors.right: parent.right
         anchors.top: parent.top
         height: width
-        TextEdit {
-            text: gameModel.asciiArt;
-            wrapMode: Text.WrapAnywhere
-            font.pixelSize: 12
-            selectByMouse: true
-        }
+        text: gameModel.asciiArt;
+        readOnly: true
+        font.pixelSize: 12
     }
 
 
