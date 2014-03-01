@@ -1,27 +1,32 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 
-Flickable {
+Rectangle {
     width: 800
     height: 600
 
-    Image{
-        id: inputImage;
+
+    Rectangle{
         anchors.left: parent.left
+        anchors.right: parent.horizontalCenter
         anchors.top: parent.top
-        anchors.right: parent.right
-        anchors.bottom: parent.verticalCenter
-        anchors.bottomMargin: 2
-        source: gameModel.image
+        height: width
+        border.color: "black"
+        Flickable{
+            anchors.fill: parent
+            Image{
+                id: inputImage;
+                source: gameModel.image
+            }
+        }
     }
 
     ScrollView {
         id: asciiResult
-        anchors.left: parent.left
-        anchors.top: parent.verticalCenter
+        anchors.left: parent.horizontalCenter
         anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 100
+        anchors.top: parent.top
+        height: width
         TextEdit {
             text: gameModel.asciiArt;
             wrapMode: Text.WrapAnywhere
