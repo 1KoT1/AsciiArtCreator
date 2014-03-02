@@ -2,8 +2,14 @@
 #define MODEL_H
 
 #include <QObject>
+#include <QImage>
+#include <QPixmap>
+#include <QQuickImageProvider>
 
-class Model : public QObject
+const QLatin1String gameModel("gameModel");
+const QLatin1String modifedImg("modifedimg");
+
+class Model : public QObject, public QQuickImageProvider
 {
 	Q_OBJECT
 	Q_PROPERTY(QString image READ image NOTIFY imageChanged)
@@ -11,6 +17,7 @@ class Model : public QObject
 	Q_PROPERTY(QString whiteChar READ whiteChar NOTIFY whiteCharChanged)
 	Q_PROPERTY(QString blackChar READ blackChar NOTIFY blackCharChanged)
 	Q_PROPERTY(int asciiArtWight READ asciiArtWight NOTIFY asciiArtWightChanged)
+	Q_PROPERTY(QString modifedImgURI READ modifedImgURI NOTIFY modifedImgURIChanged)
 
 public:
 	explicit Model(QObject *parent = 0);
@@ -33,12 +40,16 @@ public:
 	void setWhiteChar(const QChar & ch);
 	const QChar & blackChar() const;
 	void setBlackChar(const QChar &ch);
+
+	QString modifedImgURI() const { return QString("image://%0/%1").arg(gameModel).arg(modifedImg); }
+	QPixmap requestPixmap(const QString &id, QSize *size, const QSize &requestedSize);
 signals:
 	void imageChanged();
 	void asciiArtChanged();
 	void whiteCharChanged();
 	void blackCharChanged();
 	void asciiArtWightChanged();
+	void modifedImgURIChanged();
 
 public slots:
 private:
@@ -47,6 +58,7 @@ private:
 	QChar m_whiteChar;
 	QChar m_blackChar;
 	int m_AsciiArtWight;
+	QImage m_modifedImg;
 };
 
 #endif // MODEL_H

@@ -16,7 +16,7 @@ Rectangle {
             anchors.fill: parent
             Image{
                 id: inputImage;
-                source: gameModel.image
+                source: gameModel.modifedImgURI
             }
         }
     }

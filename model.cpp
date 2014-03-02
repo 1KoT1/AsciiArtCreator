@@ -3,10 +3,12 @@
 
 Model::Model(QObject *parent) :
 	QObject(parent),
+	QQuickImageProvider(QQuickImageProvider::Pixmap),
 	m_image(qApp->applicationDirPath() + "/qml/AsciiArtGenirator/AsciiArtGenirator80.png"),
 	m_whiteChar('_'),
 	m_blackChar('@'),
-	m_AsciiArtWight(80)
+	m_AsciiArtWight(80),
+	m_modifedImg(QImage(m_image))
 {
 }
 
@@ -22,7 +24,7 @@ void Model::setImage(const QString img){
 }
 
 const QString &Model::asciiArt() const{
-return m_asciiArt;
+	return m_asciiArt;
 }
 
 void Model::setAsciiArt(const QString art){
@@ -59,6 +61,23 @@ void Model::setBlackChar(const QChar &ch){
 		m_blackChar = ch;
 		emit blackCharChanged();
 	}
+}
+
+QPixmap Model::requestPixmap(const QString &id, QSize *size, const QSize &requestedSize) {
+	if(id == modifedImg) {
+		if (size)
+			*size = m_modifedImg.size();
+
+		if(requestedSize.width() < 0 || requestedSize.height() < 0 || requestedSize == m_modifedImg.size())
+			return QPixmap::fromImage(m_modifedImg);
+		else {
+			auto pmap = QPixmap::fromImage(m_modifedImg);
+			pmap.scaled(requestedSize);
+			return pmap;
+		}
+	}
+	else
+		return QQuickImageProvider::requestPixmap(id, size, requestedSize);
 }
 
 const QChar &Model::blackChar() const{

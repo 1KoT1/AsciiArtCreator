@@ -6,37 +6,37 @@ Rectangle {
     height: 600
 
 
-    ScrollView {
-        id: asciiResult
-        anchors.left: parent.horizontalCenter
-        anchors.leftMargin: 2
+    Rectangle{
+        anchors.left: parent.left
+        anchors.right: parent.horizontalCenter
         anchors.top: parent.top
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 100
-        TextEdit {
-            text: gameModel.asciiArt;
-            wrapMode: Text.WrapAnywhere
-            font.pixelSize: 12
-            selectByMouse: true
+        height: width
+        border.color: "black"
+        Flickable{
+            anchors.fill: parent
+            Image{
+                id: inputImage;
+                source: gameModel.modifedImgURI
+            }
         }
     }
 
-    Image{
-        id: inputImage;
-        anchors.left: parent.left
+    TextArea {
+        id: asciiResult
+        anchors.left: parent.horizontalCenter
+        anchors.right: parent.right
         anchors.top: parent.top
-        anchors.right: parent.horizontalCenter
-        anchors.rightMargin: 2
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 100
-        source: gameModel.image
+        height: width
+        text: gameModel.asciiArt;
+        readOnly: true
+        font.pixelSize: 12
     }
+
 
     Flow{
         anchors.left: parent.left
         anchors.leftMargin: 5
-        anchors.top: inputImage.bottom
+        anchors.top: asciiResult.bottom
         anchors.topMargin: 5
         anchors.right: parent.right
         spacing: 15
@@ -46,11 +46,11 @@ Rectangle {
 
             TextField {
                 id: address
-                width: inputImage.width
+                width: inputImage.width / 2
                 text: gameModel.image
             }
             Button{
-                text: qsTr("Выбрать файл.")
+                text: qsTr("Выбрать файл...")
                 onClicked:{
                     controller.setImage();
                     controller.calcAsciiArt();
