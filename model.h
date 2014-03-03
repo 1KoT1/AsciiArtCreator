@@ -7,7 +7,7 @@
 #include <QQuickImageProvider>
 
 const QLatin1String gameModel("gameModel");
-const QLatin1String modifedImg("modifedimg");
+const QLatin1String modifedImgStr("modifedimg");
 
 class Model : public QObject, public QQuickImageProvider
 {
@@ -18,6 +18,7 @@ class Model : public QObject, public QQuickImageProvider
 	Q_PROPERTY(QString blackChar READ blackChar NOTIFY blackCharChanged)
 	Q_PROPERTY(int asciiArtWight READ asciiArtWight NOTIFY asciiArtWightChanged)
 	Q_PROPERTY(QString modifedImgURI READ modifedImgURI NOTIFY modifedImgURIChanged)
+    Q_PROPERTY(int modifedImgHeight READ modifedImgHeight NOTIFY modifedImgChanged)
 
 public:
 	explicit Model(QObject *parent = 0);
@@ -41,15 +42,19 @@ public:
 	const QChar & blackChar() const;
 	void setBlackChar(const QChar &ch);
 
-	QString modifedImgURI() const { return QString("image://%0/%1").arg(gameModel).arg(modifedImg); }
+    QString modifedImgURI() const { return QString("image://%0/%1").arg(gameModel).arg(modifedImgStr); }
+    const QImage &modifedImg() const;
+    void setModifedImg(const QImage &img);
 	QPixmap requestPixmap(const QString &id, QSize *size, const QSize &requestedSize);
+    int modifedImgHeight() const;
 signals:
 	void imageChanged();
 	void asciiArtChanged();
 	void whiteCharChanged();
 	void blackCharChanged();
-	void asciiArtWightChanged();
-	void modifedImgURIChanged();
+    void asciiArtWightChanged();
+    void modifedImgURIChanged();
+    void modifedImgChanged();
 
 public slots:
 private:

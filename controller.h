@@ -20,7 +20,11 @@ public:
 	/** Задать адрес файла картинки.*/
 	Q_INVOKABLE void setImage(const QString img);
 	/** Выбрать файл картинки.*/
-	Q_INVOKABLE void setImage();
+    Q_INVOKABLE void setImage();
+    /** Изменить ширину картинки.*/
+    Q_INVOKABLE void setModifedImgHeight(const QString &height);
+    /** Изменить ширину картинки.*/
+    Q_INVOKABLE void setModifedImgHeight(int height);
 signals:
 	
 public slots:

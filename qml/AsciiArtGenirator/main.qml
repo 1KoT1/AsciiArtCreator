@@ -58,6 +58,14 @@ Rectangle {
             }
         }
 
+        TextField{
+            id: mimgh
+            text: gameModel.modifedImgHeight
+            onAccepted: {
+                controller.setModifedImgHeight(text)
+            }
+        }
+
         Row{
             spacing: 3
             Text { text: qsTr("Белый символ") }

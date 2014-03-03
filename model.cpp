@@ -10,6 +10,7 @@ Model::Model(QObject *parent) :
 	m_AsciiArtWight(80),
 	m_modifedImg(QImage(m_image))
 {
+    connect(this, SIGNAL(modifedImgChanged),SIGNAL(modifedImgURIChanged));
 }
 
 const QString &Model::image() const{
@@ -60,11 +61,21 @@ void Model::setBlackChar(const QChar &ch){
 	if(ch != m_blackChar){
 		m_blackChar = ch;
 		emit blackCharChanged();
-	}
+    }
+}
+
+const QImage &Model::modifedImg() const {
+    return m_modifedImg;
+}
+
+void Model::setModifedImg(const QImage &img)
+{
+    m_modifedImg = img;
+    emit modifedImgChanged();
 }
 
 QPixmap Model::requestPixmap(const QString &id, QSize *size, const QSize &requestedSize) {
-	if(id == modifedImg) {
+    if(id == modifedImgStr) {
 		if (size)
 			*size = m_modifedImg.size();
 
@@ -77,7 +88,11 @@ QPixmap Model::requestPixmap(const QString &id, QSize *size, const QSize &reques
 		}
 	}
 	else
-		return QQuickImageProvider::requestPixmap(id, size, requestedSize);
+        return QQuickImageProvider::requestPixmap(id, size, requestedSize);
+}
+
+int Model::modifedImgHeight() const{
+    return m_modifedImg.height();
 }
 
 const QChar &Model::blackChar() const{

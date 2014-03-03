@@ -60,11 +60,21 @@ void Controller::setImage(const QString img){
 	m_model->setImage(img);
 }
 
-void Controller::setImage()
-{
+void Controller::setImage(){
 	auto fileName = QFileDialog::getOpenFileName(QApplication::activeWindow (),
 			trUtf8("Открыть изображение"), "", trUtf8("Изображения (*.png *.jpg *.bmp)"));
 	if(fileName.isNull())
 		return;
-	setImage(fileName);
+    setImage(fileName);
+}
+
+void Controller::setModifedImgHeight(const QString &height){
+    bool ctrl;
+    int res = height.toInt(&ctrl);
+    if(ctrl)
+        setModifedImgHeight(res);
+}
+
+void Controller::setModifedImgHeight(int height){
+    m_model->setModifedImg(m_model->modifedImg().scaledToHeight(height));
 }
