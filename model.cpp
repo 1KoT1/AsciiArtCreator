@@ -83,9 +83,6 @@ void Model::setModifedImg(const QImage &img)
 {
     m_modifedImg = img;
     emit modifedImgChanged();
-    auto uri = modifedImgURI();
-    setModifedImgURI("");
-    setModifedImgURI(uri);
 }
 
 QPixmap Model::requestPixmap(const QString &id, QSize *size, const QSize &requestedSize) {

@@ -18,7 +18,10 @@ Rectangle {
                 id: inputImage;
                 cache: false
                 source: gameModel.modifedImgURI
-                onSourceChanged: console.log(source)
+                Connections{
+                    target: gameModel
+                    onModifedImgChanged: { inputImage.source = ""; inputImage.source = gameModel.modifedImgURI; }
+                }
             }
         }
     }
