@@ -21,10 +21,14 @@ public:
 	Q_INVOKABLE void setImage(const QString img);
 	/** Выбрать файл картинки.*/
     Q_INVOKABLE void setImage();
-    /** Изменить ширину картинки.*/
+    /** Изменить высоту картинки.*/
     Q_INVOKABLE void setModifedImgHeight(const QString &height);
-    /** Изменить ширину картинки.*/
+    /** Изменить высоту картинки.*/
     Q_INVOKABLE void setModifedImgHeight(int height);
+    /** Изменить ширину картинки.*/
+    Q_INVOKABLE void setModifedImgWidth(const QString &width);
+    /** Изменить ширину картинки.*/
+    Q_INVOKABLE void setModifedImgWidth(int width);
 signals:
 	
 public slots:
