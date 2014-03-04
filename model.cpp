@@ -21,6 +21,11 @@ const QString &Model::image() const{
 void Model::setImage(const QString img){
 	if(img != m_image){
 		m_image = img;
+        if(!m_surceImg.load(m_image)){
+            m_surceImg = QImage(1, 1, QImage::Format_Mono);
+            m_surceImg.fill(0);
+        }
+        setModifedImg(m_surceImg);
 		emit imageChanged();
 	}
 }

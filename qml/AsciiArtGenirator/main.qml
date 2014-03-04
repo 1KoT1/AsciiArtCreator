@@ -21,6 +21,10 @@ Rectangle {
             TextField {
                 id: address
                 text: gameModel.image
+                onAccepted:{
+                    controller.setImage(address.text);
+                    controller.calcAsciiArt();
+                }
             }
             Button{
                 text: qsTr("Выбрать файл...")
