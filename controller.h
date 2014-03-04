@@ -31,6 +31,8 @@ public slots:
 	
 private:
 	Model * m_model;
+
+    void modifImage(int newWidth, int newHeight);
 };
 
 #endif // CONTROLLER_H

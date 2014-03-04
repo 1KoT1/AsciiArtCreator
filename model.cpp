@@ -8,7 +8,8 @@ Model::Model(QObject *parent) :
 	m_whiteChar('_'),
 	m_blackChar('@'),
 	m_AsciiArtWight(80),
-    m_modifedImg(QImage(m_image)),
+    m_surceImg(QImage(m_image)),
+    m_modifedImg(m_surceImg),
     m_modifedImgURI(QString("image://%0/%1").arg(gameModel).arg(modifedImgStr))
 {
 }
@@ -79,6 +80,10 @@ const QImage &Model::modifedImg() const {
     return m_modifedImg;
 }
 
+const QImage &Model::sourcedImg() const{
+    return m_surceImg;
+}
+
 void Model::setModifedImg(const QImage &img)
 {
     m_modifedImg = img;
@@ -100,6 +105,10 @@ QPixmap Model::requestPixmap(const QString &id, QSize *size, const QSize &reques
 	}
 	else
         return QQuickImageProvider::requestPixmap(id, size, requestedSize);
+}
+
+int Model::modifedImgWidth() const{
+    return m_modifedImg.width();
 }
 
 int Model::modifedImgHeight() const{

@@ -76,5 +76,9 @@ void Controller::setModifedImgHeight(const QString &height){
 }
 
 void Controller::setModifedImgHeight(int height){
-    m_model->setModifedImg(m_model->modifedImg().scaledToHeight(height));
+    modifImage(m_model->modifedImgWidth(), height);
+}
+
+void Controller::modifImage(int newWidth, int newHeight){
+    m_model->setModifedImg(m_model->sourcedImg().scaled(newWidth, newHeight));
 }
