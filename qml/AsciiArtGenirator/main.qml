@@ -6,44 +6,13 @@ Rectangle {
     height: 600
 
 
-    Rectangle{
-        anchors.left: parent.left
-        anchors.right: parent.horizontalCenter
-        anchors.top: parent.top
-        height: width
-        border.color: "black"
-        Flickable{
-            anchors.fill: parent
-            Image{
-                id: inputImage;
-                cache: false
-                source: gameModel.modifedImgURI
-                Connections{
-                    target: gameModel
-                    onModifedImgChanged: { inputImage.source = ""; inputImage.source = gameModel.modifedImgURI; }
-                }
-            }
-        }
-    }
-
-    TextArea {
-        id: asciiResult
-        anchors.left: parent.horizontalCenter
-        anchors.right: parent.right
-        anchors.top: parent.top
-        height: width
-        text: gameModel.asciiArt;
-        readOnly: true
-        font.pixelSize: 12
-    }
-
-
     Flow{
+        id: controlPanel
         anchors.left: parent.left
         anchors.leftMargin: 5
-        anchors.top: asciiResult.bottom
-        anchors.topMargin: 5
         anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        height: 100
         spacing: 15
 
         Row{
@@ -51,7 +20,6 @@ Rectangle {
 
             TextField {
                 id: address
-                width: inputImage.width / 2
                 text: gameModel.image
             }
             Button{
@@ -117,5 +85,38 @@ Rectangle {
                 }
             }
         }
+    }
+
+    Rectangle{
+        id: inputImageArea
+        anchors.left: parent.left
+        anchors.right: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.bottom: controlPanel.top
+        anchors.bottomMargin: 5
+        border.color: "black"
+        Flickable{
+            anchors.fill: parent
+            Image{
+                id: inputImage;
+                cache: false
+                source: gameModel.modifedImgURI
+                Connections{
+                    target: gameModel
+                    onModifedImgChanged: { inputImage.source = ""; inputImage.source = gameModel.modifedImgURI; }
+                }
+            }
+        }
+    }
+
+    TextArea {
+        id: asciiResult
+        anchors.left: parent.horizontalCenter
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.bottom: inputImageArea.bottom
+        text: gameModel.asciiArt;
+        readOnly: true
+        font.pixelSize: 12
     }
 }
