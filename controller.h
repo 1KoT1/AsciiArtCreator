@@ -3,6 +3,8 @@
 
 #include <QObject>
 
+#include <QFontMetrics>
+
 class Model;
 
 class Controller : public QObject
@@ -34,6 +36,7 @@ public:
     static int maxHeightFont(const QFont &f);
     static qreal averageHeightFont(const QFont &f);
     static int maxStatisticHeightFont(const QFont &f, qreal limit = 1.3);
+    static QImage charToImg(const QChar &ch, const QFont &f);
 signals:
 	
 public slots:
