@@ -42,7 +42,8 @@ public:
 	const QChar & blackChar() const;
 	void setBlackChar(const QChar &ch);
 
-    QString modifedImgURI() const { return QString("image://%0/%1").arg(gameModel).arg(modifedImgStr); }
+    QString modifedImgURI() const;
+    void setModifedImgURI(const QString &uri);
     const QImage &modifedImg() const;
     void setModifedImg(const QImage &img);
 	QPixmap requestPixmap(const QString &id, QSize *size, const QSize &requestedSize);
@@ -64,6 +65,7 @@ private:
 	QChar m_blackChar;
 	int m_AsciiArtWight;
 	QImage m_modifedImg;
+    QString m_modifedImgURI;
 };
 
 #endif // MODEL_H

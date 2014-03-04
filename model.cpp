@@ -8,9 +8,9 @@ Model::Model(QObject *parent) :
 	m_whiteChar('_'),
 	m_blackChar('@'),
 	m_AsciiArtWight(80),
-	m_modifedImg(QImage(m_image))
+    m_modifedImg(QImage(m_image)),
+    m_modifedImgURI(QString("image://%0/%1").arg(gameModel).arg(modifedImgStr))
 {
-    connect(this, SIGNAL(modifedImgChanged),SIGNAL(modifedImgURIChanged));
 }
 
 const QString &Model::image() const{
@@ -64,6 +64,17 @@ void Model::setBlackChar(const QChar &ch){
     }
 }
 
+QString Model::modifedImgURI() const{
+    return m_modifedImgURI;
+}
+
+void Model::setModifedImgURI(const QString &uri){
+    if(uri != m_modifedImgURI){
+        m_modifedImgURI = uri;
+        emit modifedImgURIChanged();
+    }
+}
+
 const QImage &Model::modifedImg() const {
     return m_modifedImg;
 }
@@ -72,6 +83,9 @@ void Model::setModifedImg(const QImage &img)
 {
     m_modifedImg = img;
     emit modifedImgChanged();
+    auto uri = modifedImgURI();
+    setModifedImgURI("");
+    setModifedImgURI(uri);
 }
 
 QPixmap Model::requestPixmap(const QString &id, QSize *size, const QSize &requestedSize) {
