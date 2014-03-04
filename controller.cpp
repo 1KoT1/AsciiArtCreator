@@ -87,6 +87,64 @@ void Controller::setModifedImgWidth(int width){
     modifImage(width, m_model->modifedImgHeight());
 }
 
+bool isAsciiArtSimbol(const QChar & ch, const QFontMetrics &fm){
+    return ch.isPrint()
+            && ch.script() != QChar::Script_Arabic && ch.script() != QChar::Script_Syriac && ch.script() != QChar::Script_Georgian && ch.script() != QChar::Script_Nko && ch.script() != QChar::Script_Hebrew
+            && fm.inFont(ch) && fm.boundingRect(ch).x() >= 0;
+}
+
+void Controller::printFont(const QFont &f){
+    QFontMetrics fm(f);
+    for(uchar c = 0; c < 255; ++c)
+        for(uchar r = 0; r < 255; ++r){
+            QChar ch(c, r);
+            if(isAsciiArtSimbol(ch, fm))
+                qDebug()<<ch<<fm.boundingRect(ch)<<ch.script();
+        }
+}
+
+int Controller::maxHeightFont(const QFont &f){
+    int res = 0;
+    QFontMetrics fm(f);
+    for(uchar c = 0; c < 255; ++c)
+        for(uchar r = 0; r < 255; ++r){
+            QChar ch(c, r);
+            if(isAsciiArtSimbol(ch, fm))
+                if(fm.boundingRect(ch).height() > res)
+                    res = fm.boundingRect(ch).height();
+        }
+    return res;
+}
+
+qreal Controller::averageHeightFont(const QFont &f){
+    int count = 0;
+    qreal summ = 0;
+    QFontMetrics fm(f);
+    for(uchar c = 0; c < 255; ++c)
+        for(uchar r = 0; r < 255; ++r){
+            QChar ch(c, r);
+            if(isAsciiArtSimbol(ch, fm)){
+                count++;
+                summ += fm.boundingRect(ch).height();
+            }
+        }
+    return summ / count;
+}
+
+int Controller::maxStatisticHeightFont(const QFont &f, qreal limit){
+    auto a = averageHeightFont(f);
+    int res = 0;
+    QFontMetrics fm(f);
+    for(uchar c = 0; c < 255; ++c)
+        for(uchar r = 0; r < 255; ++r){
+            QChar ch(c, r);
+            if(isAsciiArtSimbol(ch, fm))
+                if(fm.boundingRect(ch).height() > res && fm.boundingRect(ch).height() / a <= 1.3)
+                    res = fm.boundingRect(ch).height();
+        }
+    return res;
+}
+
 void Controller::modifImage(int newWidth, int newHeight){
     m_model->setModifedImg(m_model->sourcedImg().scaled(newWidth, newHeight));
 }

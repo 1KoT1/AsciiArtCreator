@@ -29,6 +29,11 @@ public:
     Q_INVOKABLE void setModifedImgWidth(const QString &width);
     /** Изменить ширину картинки.*/
     Q_INVOKABLE void setModifedImgWidth(int width);
+
+    static void printFont(const QFont &f);
+    static int maxHeightFont(const QFont &f);
+    static qreal averageHeightFont(const QFont &f);
+    static int maxStatisticHeightFont(const QFont &f, qreal limit = 1.3);
 signals:
 	
 public slots:
