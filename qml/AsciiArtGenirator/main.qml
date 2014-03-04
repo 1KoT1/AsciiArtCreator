@@ -35,7 +35,8 @@ Rectangle {
             id: mimgh
             text: gameModel.modifedImgHeight
             onAccepted: {
-                controller.setModifedImgHeight(text)
+                controller.setModifedImgHeight(text);
+                controller.calcAsciiArt();
             }
         }
 
@@ -43,7 +44,8 @@ Rectangle {
             id: mimgw
             text: gameModel.modifedImgWidth
             onAccepted: {
-                controller.setModifedImgWidth(text)
+                controller.setModifedImgWidth(text);
+                controller.calcAsciiArt();
             }
         }
 
