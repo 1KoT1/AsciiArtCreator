@@ -95,13 +95,14 @@ bool isAsciiArtSimbol(const QChar & ch, const QFontMetrics &fm){
 }
 
 void Controller::printFont(const QFont &f){
+    auto h = maxStatisticHeightFont(f);
     QFontMetrics fm(f);
     for(uchar c = 0; c < 255; ++c)
         for(uchar r = 0; r < 255; ++r){
             QChar ch(c, r);
             if(isAsciiArtSimbol(ch, fm)){
                 qDebug()<<ch<<fm.boundingRect(ch)<<ch.script();
-                auto img = charToImg(ch, f);
+                auto img = charToImg(ch, f, h);
                 img.save(QString("/home/vasya/qqq/%0_%1_%2_%3_%4_%5.png").arg(ch.row()).arg(ch.cell()).arg(fm.boundingRect(ch).x()).arg(fm.boundingRect(ch).y()).arg(fm.boundingRect(ch).width()).arg(fm.boundingRect(ch).height()));
             }
         }
@@ -149,15 +150,15 @@ int Controller::maxStatisticHeightFont(const QFont &f, qreal limit){
     return res;
 }
 
-QImage Controller::charToImg(const QChar &ch, const QFont &f){
+QImage Controller::charToImg(const QChar &ch, const QFont &f, int height){
     QFontMetrics fm(f);
     auto r = fm.boundingRect(ch);
-    QImage img(r.width() + r.x(), r.height(), QImage::Format_RGB32);
+    QImage img(r.width() + r.x(), height, QImage::Format_RGB32);
     img.fill(Qt::white);
     QPainter painter(&img);
     painter.setFont(f);
     painter.setPen(QPen(Qt::black, 1));
-    painter.drawText(0, -fm.boundingRect(ch).y(), ch);
+    painter.drawText(0, -r.y(), ch);
     return img;
 }
 
