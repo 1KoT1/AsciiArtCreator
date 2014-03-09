@@ -35,7 +35,7 @@ Rectangle {
             }
         }
 
-        TextField{
+        NumberikUpDown{
             id: mimgh
             text: gameModel.modifedImgHeight
             onAccepted: {
@@ -44,7 +44,7 @@ Rectangle {
             }
         }
 
-        TextField{
+        NumberikUpDown{
             id: mimgw
             text: gameModel.modifedImgWidth
             onAccepted: {
@@ -103,6 +103,9 @@ Rectangle {
         border.color: "black"
         Flickable{
             anchors.fill: parent
+            clip: true
+            contentWidth: inputImage.width;
+            contentHeight: inputImage.height
             Image{
                 id: inputImage;
                 cache: false

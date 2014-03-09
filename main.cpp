@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 
 
         QFont f;
-        controller->printFont(f);
+//        controller->printFont(f);
         qDebug()<<f.pixelSize()<<f.pointSize()<<controller->maxHeightFont(f)<<controller->averageHeightFont(f)<<controller->maxStatisticHeightFont(f);
 
 		controller->calcAsciiArt();
