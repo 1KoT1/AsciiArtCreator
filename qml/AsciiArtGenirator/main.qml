@@ -88,11 +88,13 @@ Rectangle {
                     text: qsTr("Ширина")
                 }
 
-                NumberikUpDown{
+                SpinBox{
                     id: mimgw
-                    text: gameModel.modifedImgWidth
-                    onAccepted: {
-                        controller.setModifedImgWidth(text);
+                    width: 50
+                    maximumValue: 1000
+                    value: gameModel.modifedImgWidth
+                    onValueChanged: {
+                        controller.setModifedImgWidth(value);
                         controller.calcAsciiArt();
                     }
                 }
@@ -108,11 +110,13 @@ Rectangle {
                     width: imgWlable.width
                 }
 
-                NumberikUpDown{
+                SpinBox{
                     id: mimgh
-                    text: gameModel.modifedImgHeight
-                    onAccepted: {
-                        controller.setModifedImgHeight(text);
+                    width: 50
+                    maximumValue: 1000
+                    value: gameModel.modifedImgHeight
+                    onValueChanged: {
+                        controller.setModifedImgHeight(value);
                         controller.calcAsciiArt();
                     }
                 }

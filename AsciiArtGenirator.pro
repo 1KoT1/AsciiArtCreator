@@ -59,5 +59,4 @@ OTHER_FILES += \
     android/res/values/strings.xml \
     android/res/values-zh-rCN/strings.xml \
     android/res/values-rs/strings.xml \
-    android/res/values-id/strings.xml \
-    qml/AsciiArtGenirator/NumberikUpDown.qml
+    android/res/values-id/strings.xml
