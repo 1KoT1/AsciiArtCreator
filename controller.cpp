@@ -15,9 +15,8 @@ Controller::Controller(Model * model, QObject *parent) :
 }
 
 void Controller::calcAsciiArt(){
-	auto img = m_model->modifedImg().scaled(m_model->asciiArtWight(), m_model->asciiArtWight() * (float)m_model->modifedImg().height() / m_model->modifedImg().width()).convertToFormat(QImage::Format_Indexed8, {qRgb(255, 255, 255), qRgb(0, 0, 0)});
-	OnePixelOneChar a(m_model->blackChar(), m_model->whiteChar(), m_model->asciiArtWight());
-	m_model->setAsciiArt(a.run(img));
+    OnePixelOneChar a(m_model->blackChar(), m_model->whiteChar(), m_model->modifedImgWidth());
+    m_model->setAsciiArt(a.run(m_model->modifedImg()));
 }
 
 void Controller::setWhiteChar(const QString &str){

@@ -8,18 +8,18 @@ OnePixelOneChar::OnePixelOneChar(const QChar blackChar, const QChar whiteChar, i
 	mAsciiArtWight(asciiArtWight)
 {}
 
-QString OnePixelOneChar::run(const QImage &img) const{
-	auto imgData = img.constBits();
-	QString res;
-	for (int i = 0; i < img.byteCount(); ++i) {
-		if (*(imgData + i)) {
-			res.append(mBlackChar);
-		} else {
-			res.append(mWhiteChar);
-		}
-		if(i && i % mAsciiArtWight == 0)
-			res.append('\n');
-	}
+QString OnePixelOneChar::run(const QImage &imgsrc) const{
+    auto img = imgsrc.convertToFormat(QImage::Format_Indexed8, {qRgb(255, 255, 255), qRgb(0, 0, 0)});
+    QString res;
+    for(int i = 0; i < img.height(); ++i){
+        for(int j = 0; j < img.width(); ++j){
+            if(img.pixel(j, i) == qRgb(0, 0, 0))
+                res.append(mBlackChar);
+            else
+                res.append(mWhiteChar);
+        }
+        res.append('\n');
+    }
 	return res;
 }
 
