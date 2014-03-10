@@ -1,6 +1,7 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
+#include "algorithmes.h"
 #include <QObject>
 
 #include <QFontMetrics>
@@ -31,6 +32,7 @@ public:
     Q_INVOKABLE void setModifedImgWidth(const QString &width);
     /** Изменить ширину картинки.*/
     Q_INVOKABLE void setModifedImgWidth(int width);
+    Q_INVOKABLE void setAlgorithm(int value);
 
     static void printFont(const QFont &f);
     static int maxHeightFont(const QFont &f);

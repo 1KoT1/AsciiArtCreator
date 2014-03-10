@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
+import AsciiArtGenirator 1.0
 
 Rectangle {
     width: 800
@@ -129,6 +130,7 @@ Rectangle {
             anchors.leftMargin: 5
             anchors.right: parent.right
             model: ["Один пиксель — один символ"]
+            onCurrentIndexChanged: controller.setAlgorithm(currentIndex)
         }
 
         Loader{

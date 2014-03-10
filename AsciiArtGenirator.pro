@@ -33,7 +33,8 @@ HEADERS += \
     model.h \
     controller.h \
     algorith.h \
-    onepixelonechar.h
+    onepixelonechar.h \
+    algorithmes.h
 
 OTHER_FILES += \
     android/src/org/qtproject/qt5/android/bindings/QtActivity.java \

@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 {
         QApplication app(argc, argv);
 
+        qmlRegisterType<Algorithmes>("AsciiArtGenirator", 1, 0, "Algorithmes");
 		QtQuick2ApplicationViewer viewer;
 		auto model = new Model(&app);
 		auto controller = new Controller(model, &app);

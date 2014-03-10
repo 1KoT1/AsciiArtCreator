@@ -76,7 +76,15 @@ void Controller::setModifedImgWidth(const QString &width){
 }
 
 void Controller::setModifedImgWidth(int width){
-	modifImage(width, m_model->modifedImgHeight());
+    modifImage(width, m_model->modifedImgHeight());
+}
+
+void Controller::setAlgorithm(int value){
+    auto key = Algorithmes::m().valueToKey(value);
+    if(key)
+        m_model->setAlgorithm(static_cast<Algorithmes::AlgorithmesEnum>(value));
+    else
+        m_model->setAlgorithm(Algorithmes::OnePixelOneChar);
 }
 
 bool isAsciiArtSimbol(const QChar & ch, const QFontMetrics &fm){
