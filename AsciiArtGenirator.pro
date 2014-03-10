@@ -19,7 +19,8 @@ QML_IMPORT_PATH =
 SOURCES += main.cpp \
     model.cpp \
     controller.cpp \
-    algorith.cpp
+    algorith.cpp \
+    onepixelonechar.cpp
 
 # Installation path
 # target.path =
@@ -31,7 +32,8 @@ qtcAddDeployment()
 HEADERS += \
     model.h \
     controller.h \
-    algorith.h
+    algorith.h \
+    onepixelonechar.h
 
 OTHER_FILES += \
     android/src/org/qtproject/qt5/android/bindings/QtActivity.java \

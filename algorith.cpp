@@ -1,6 +1,6 @@
 #include "algorith.h"
 
-Algorith::Algorith(QObject *parent) :
+Algorithm::Algorithm(QObject *parent) :
   QObject(parent)
 {
 }

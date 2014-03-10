@@ -3,16 +3,16 @@
 
 #include <QObject>
 #include <QImage>
+#include <QFuture>
 
-class Algorith : public QObject
+class Algorithm : public QObject
 {
 	Q_OBJECT
 public:
-	explicit Algorith(QObject *parent = 0);
+	explicit Algorithm(QObject *parent = 0);
 	virtual QString run(const QImage &img) const = 0;
-	virtual void runAsinc(const QImage &img) const = 0;
+	virtual QFuture<QString> runAsinc(const QImage &img) const = 0;
 signals:
-	void done(const QString &res);
 public slots:
 
 };
