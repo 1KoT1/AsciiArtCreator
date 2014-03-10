@@ -8,6 +8,7 @@ Column {
         Text { text: qsTr("Белый символ") }
         TextField {
             width: 20
+            maximumLength: 1
             text: gameModel.whiteChar
             onAccepted: {
                 controller.setWhiteChar(text);
@@ -21,6 +22,7 @@ Column {
         Text { text: qsTr("Чёрный символ") }
         TextField{
             width: 20
+            maximumLength: 1
             text: gameModel.blackChar
             onAccepted: {
                 controller.setBlackChar(text);
