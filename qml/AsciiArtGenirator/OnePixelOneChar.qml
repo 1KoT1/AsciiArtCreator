@@ -30,17 +30,4 @@ Column {
             }
         }
     }
-
-    Row{
-        spacing: 3
-        Text { text: qsTr("Ширина в символах") }
-        TextField{
-            width: 50
-            text: gameModel.asciiArtWight
-            onAccepted: {
-                controller.setAsciiArtWight(text);
-                controller.calcAsciiArt();
-            }
-        }
-    }
 }

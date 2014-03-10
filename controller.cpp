@@ -37,13 +37,6 @@ void Controller::setBlackChar(const QString &str){
     m_model->onePixelOneCharModel()->setBlackChar(ch);
 }
 
-void Controller::setAsciiArtWight(const QString w){
-	bool ok;
-	auto res = w.toInt(&ok);
-	if(ok)
-		m_model->setAasciiArtWight(res);
-}
-
 void Controller::setImage(const QString img){
 	m_model->setImage(img);
 }

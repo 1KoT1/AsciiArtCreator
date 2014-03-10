@@ -5,7 +5,6 @@ Model::Model(QObject *parent) :
     QObject(parent),
     QQuickImageProvider(QQuickImageProvider::Pixmap),
     m_image("qml/AsciiArtGenirator/AsciiArtGenirator80.png"),
-    m_AsciiArtWight(80),
     m_surceImg(QImage(m_image)),
     m_modifedImg(m_surceImg),
     m_modifedImgURI(QString("image://%0/%1").arg(gameModel).arg(modifedImgStr)),
@@ -37,17 +36,6 @@ void Model::setAsciiArt(const QString art){
     if(art != m_asciiArt){
         m_asciiArt = art;
         emit asciiArtChanged();
-    }
-}
-
-int Model::asciiArtWight() const{
-    return m_AsciiArtWight;
-}
-
-void Model::setAasciiArtWight(int w){
-    if(w != m_AsciiArtWight){
-        m_AsciiArtWight = w;
-        emit asciiArtWightChanged();
     }
 }
 

@@ -17,7 +17,6 @@ class Model : public QObject, public QQuickImageProvider
     Q_OBJECT
     Q_PROPERTY(QString image READ image NOTIFY imageChanged)
     Q_PROPERTY(QString asciiArt READ asciiArt NOTIFY asciiArtChanged)
-    Q_PROPERTY(int asciiArtWight READ asciiArtWight NOTIFY asciiArtWightChanged)
     Q_PROPERTY(QString modifedImgURI READ modifedImgURI NOTIFY modifedImgURIChanged)
     Q_PROPERTY(int modifedImgHeight READ modifedImgHeight NOTIFY modifedImgChanged)
     Q_PROPERTY(int modifedImgWidth READ modifedImgWidth NOTIFY modifedImgChanged)
@@ -37,10 +36,6 @@ public:
     /** Задать результат вычислений.*/
     void setAsciiArt(const QString art);
 
-    /** Ширина результата в символах */
-    int asciiArtWight() const;
-    void setAasciiArtWight(int w);
-
     QString modifedImgURI() const;
     void setModifedImgURI(const QString &uri);
     const QImage &modifedImg() const;
@@ -56,7 +51,6 @@ public:
 signals:
     void imageChanged();
     void asciiArtChanged();
-    void asciiArtWightChanged();
     void modifedImgURIChanged();
     void modifedImgChanged();
     void algorithmChanged();
@@ -66,7 +60,6 @@ public slots:
 private:
     QString m_image;
     QString m_asciiArt;
-    int m_AsciiArtWight;
     QImage m_surceImg;
     QImage m_modifedImg;
     QString m_modifedImgURI;
