@@ -19,7 +19,7 @@ void Controller::calcAsciiArt(){
     m_model->setAsciiArt(a.run(m_model->modifedImg()));
 }
 
-void Controller::setWhiteChar(const QString &str){
+void Controller::setOnePixelOneCharWhiteChar(const QString &str){
 	if (str.isNull() || str.isEmpty())
 		return;
 	auto ch = str.at(0);
@@ -28,7 +28,7 @@ void Controller::setWhiteChar(const QString &str){
     m_model->onePixelOneCharModel()->setWhiteChar(ch);
 }
 
-void Controller::setBlackChar(const QString &str){
+void Controller::setOnePixelOneCharBlackChar(const QString &str){
 	if (str.isNull() || str.isEmpty())
 		return;
 	auto ch = str.at(0);

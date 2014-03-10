@@ -17,8 +17,8 @@ public:
 	Q_INVOKABLE void calcAsciiArt();
 
 
-	Q_INVOKABLE void setWhiteChar(const QString &ch);
-    Q_INVOKABLE void setBlackChar(const QString &ch);
+    Q_INVOKABLE void setOnePixelOneCharWhiteChar(const QString &ch);
+    Q_INVOKABLE void setOnePixelOneCharBlackChar(const QString &ch);
 	/** Задать адрес файла картинки.*/
 	Q_INVOKABLE void setImage(const QString img);
 	/** Выбрать файл картинки.*/

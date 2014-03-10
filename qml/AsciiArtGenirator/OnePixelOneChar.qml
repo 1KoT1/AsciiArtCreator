@@ -11,7 +11,7 @@ Column {
             maximumLength: 1
             text: gameModel.onePixelOneCharModel.whiteChar
             onAccepted: {
-                controller.setWhiteChar(text);
+                controller.setOnePixelOneCharWhiteChar(text);
                 controller.calcAsciiArt();
             }
         }
@@ -25,7 +25,7 @@ Column {
             maximumLength: 1
             text: gameModel.onePixelOneCharModel.blackChar
             onAccepted: {
-                controller.setBlackChar(text);
+                controller.setOnePixelOneCharBlackChar(text);
                 controller.calcAsciiArt();
             }
         }
