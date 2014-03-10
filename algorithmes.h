@@ -9,7 +9,8 @@ class Algorithmes: public QObject{
     Q_ENUMS(AlgorithmesEnum)
 public:
     enum AlgorithmesEnum{
-        OnePixelOneChar
+        OnePixelOneChar,
+        OnePixelMoneyChars
     };
     /** Получить метаобъект перечисления. @see QMetaEnum */
     static inline const QMetaEnum m(){
