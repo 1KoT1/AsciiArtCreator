@@ -5,8 +5,6 @@ Model::Model(QObject *parent) :
     QObject(parent),
     QQuickImageProvider(QQuickImageProvider::Pixmap),
     m_image("qml/AsciiArtGenirator/AsciiArtGenirator80.png"),
-    m_whiteChar('_'),
-    m_blackChar('@'),
     m_AsciiArtWight(80),
     m_surceImg(QImage(m_image)),
     m_modifedImg(m_surceImg),
@@ -50,24 +48,6 @@ void Model::setAasciiArtWight(int w){
     if(w != m_AsciiArtWight){
         m_AsciiArtWight = w;
         emit asciiArtWightChanged();
-    }
-}
-
-const QChar &Model::whiteChar() const{
-    return m_whiteChar;
-}
-
-void Model::setWhiteChar(const QChar &ch){
-    if(ch != m_whiteChar){
-        m_whiteChar = ch;
-        emit whiteCharChanged();
-    }
-}
-
-void Model::setBlackChar(const QChar &ch){
-    if(ch != m_blackChar){
-        m_blackChar = ch;
-        emit blackCharChanged();
     }
 }
 
@@ -132,6 +112,6 @@ void Model::setAlgorithm(Algorithmes::AlgorithmesEnum value){
     }
 }
 
-const QChar &Model::blackChar() const{
-    return m_blackChar;
+OnePixelOneCharModel *Model::onePixelOneCharModel(){
+    return &mOnePixelOneCharModel;
 }

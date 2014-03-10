@@ -21,7 +21,8 @@ SOURCES += main.cpp \
     controller.cpp \
     algorith.cpp \
     onepixelonechar.cpp \
-    onepixelmoneychars.cpp
+    onepixelmoneychars.cpp \
+    onepixelonecharmodel.cpp
 
 # Installation path
 # target.path =
@@ -36,7 +37,8 @@ HEADERS += \
     algorith.h \
     onepixelonechar.h \
     algorithmes.h \
-    onepixelmoneychars.h
+    onepixelmoneychars.h \
+    onepixelonecharmodel.h
 
 OTHER_FILES += \
     android/src/org/qtproject/qt5/android/bindings/QtActivity.java \

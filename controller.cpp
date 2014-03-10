@@ -15,7 +15,7 @@ Controller::Controller(Model * model, QObject *parent) :
 }
 
 void Controller::calcAsciiArt(){
-    OnePixelOneChar a(m_model->blackChar(), m_model->whiteChar(), m_model->modifedImgWidth());
+    OnePixelOneChar a(m_model->onePixelOneCharModel()->blackChar(), m_model->onePixelOneCharModel()->whiteChar(), m_model->modifedImgWidth());
     m_model->setAsciiArt(a.run(m_model->modifedImg()));
 }
 
@@ -25,7 +25,7 @@ void Controller::setWhiteChar(const QString &str){
 	auto ch = str.at(0);
 	if(ch.isNonCharacter())
 		return;
-	m_model->setWhiteChar(ch);
+    m_model->onePixelOneCharModel()->setWhiteChar(ch);
 }
 
 void Controller::setBlackChar(const QString &str){
@@ -34,7 +34,7 @@ void Controller::setBlackChar(const QString &str){
 	auto ch = str.at(0);
 	if(ch.isNonCharacter())
 		return;
-	m_model->setBlackChar(ch);
+    m_model->onePixelOneCharModel()->setBlackChar(ch);
 }
 
 void Controller::setAsciiArtWight(const QString w){

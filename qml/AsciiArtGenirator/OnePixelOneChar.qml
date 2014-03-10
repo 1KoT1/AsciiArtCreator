@@ -9,7 +9,7 @@ Column {
         TextField {
             width: 20
             maximumLength: 1
-            text: gameModel.whiteChar
+            text: gameModel.onePixelOneCharModel.whiteChar
             onAccepted: {
                 controller.setWhiteChar(text);
                 controller.calcAsciiArt();
@@ -23,7 +23,7 @@ Column {
         TextField{
             width: 20
             maximumLength: 1
-            text: gameModel.blackChar
+            text: gameModel.onePixelOneCharModel.blackChar
             onAccepted: {
                 controller.setBlackChar(text);
                 controller.calcAsciiArt();
