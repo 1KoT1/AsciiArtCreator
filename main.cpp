@@ -15,13 +15,7 @@ int main(int argc, char *argv[])
         qmlRegisterType<Algorithmes>("AsciiArtGenirator", 1, 0, "Algorithmes");
 		QtQuick2ApplicationViewer viewer;
 		auto model = new Model(&app);
-		auto controller = new Controller(model, &app);
-
-
-        QFont f;
-//        controller->printFont(f);
-        qDebug()<<f.pixelSize()<<f.pointSize()<<controller->maxHeightFont(f)<<controller->averageHeightFont(f)<<controller->maxStatisticHeightFont(f);
-
+        auto controller = new Controller(model, &app);
 		controller->calcAsciiArt();
 		viewer.engine()->addImageProvider(gameModel, model);
 		viewer.rootContext()->setContextProperty(gameModel, model);
