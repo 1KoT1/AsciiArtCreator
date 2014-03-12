@@ -7,10 +7,9 @@ Column {
         spacing: 3
         Text { text: qsTr("Белый символ") }
         TextField {
-            width: 20
-            text: gameModel.whiteChar
+            text: gameModel.onePixelMoneyCharsModel.whiteChars
             onAccepted: {
-                controller.setWhiteChar(text);
+                controller.setOnePixelMoneyCharsWhiteChars(text);
                 controller.calcAsciiArt();
             }
         }
@@ -20,23 +19,9 @@ Column {
         spacing: 3
         Text { text: qsTr("Чёрный символ") }
         TextField{
-            width: 20
-            text: gameModel.blackChar
+            text: gameModel.onePixelMoneyCharsModel.blackChars
             onAccepted: {
-                controller.setBlackChar(text);
-                controller.calcAsciiArt();
-            }
-        }
-    }
-
-    Row{
-        spacing: 3
-        Text { text: qsTr("Ширина в символах") }
-        TextField{
-            width: 50
-            text: gameModel.asciiArtWight
-            onAccepted: {
-                controller.setAsciiArtWight(text);
+                controller.setOnePixelMoneyCharsBlackChars(text);
                 controller.calcAsciiArt();
             }
         }

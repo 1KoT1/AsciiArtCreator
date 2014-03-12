@@ -6,7 +6,7 @@
 class OnePixelOneChar : public Algorithm{
 	Q_OBJECT
 public:
-	explicit OnePixelOneChar(const QChar blackChar, const QChar whiteChar, int asciiArtWight, QObject *parent = 0);
+    explicit OnePixelOneChar(const QChar blackChar, const QChar whiteChar, QObject *parent = 0);
 	QString run(const QImage &img) const;
 	QFuture<QString> runAsinc(const QImage &img) const;
 signals:
@@ -14,8 +14,7 @@ signals:
 public slots:
 private:
 	QChar mBlackChar;
-	QChar mWhiteChar;
-	int mAsciiArtWight;
+    QChar mWhiteChar;
 };
 
 #endif // ONEPIXELONECHAR_H

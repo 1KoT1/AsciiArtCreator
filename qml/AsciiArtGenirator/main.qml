@@ -129,8 +129,12 @@ Rectangle {
             anchors.left: parent.horizontalCenter
             anchors.leftMargin: 5
             anchors.right: parent.right
-            model: ["Один пиксель — один символ"]
-            onCurrentIndexChanged: controller.setAlgorithm(currentIndex)
+            model: ["Один пиксель — один символ", "Один пиксель — несколько символов"]
+            currentIndex: gameModel.algorithm
+            onCurrentIndexChanged:{
+                controller.setAlgorithm(currentIndex);
+                controller.calcAsciiArt();
+            }
         }
 
         Loader{
@@ -140,7 +144,7 @@ Rectangle {
             anchors.right: parent.right
             anchors.top: algortncheck.bottom
             anchors.topMargin: 5
-            source: "OnePixelOneChar" + ".qml"
+            source: gameModel.algorithm == Algorithmes.OnePixelOneChar? "OnePixelOneChar.qml" : "OnePixelMoneyChars.qml";
         }
     }
 

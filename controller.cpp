@@ -7,6 +7,7 @@
 #include <QApplication>
 #include <QPainter>
 #include "onepixelonechar.h"
+#include "onepixelmoneychars.h"
 
 Controller::Controller(Model * model, QObject *parent) :
 	QObject(parent),
@@ -15,8 +16,18 @@ Controller::Controller(Model * model, QObject *parent) :
 }
 
 void Controller::calcAsciiArt(){
-    OnePixelOneChar a(m_model->onePixelOneCharModel()->blackChar(), m_model->onePixelOneCharModel()->whiteChar(), m_model->modifedImgWidth());
-    m_model->setAsciiArt(a.run(m_model->modifedImg()));
+    Algorithm *a;
+    switch (m_model->algorithm()) {
+    case Algorithmes::OnePixelOneChar:
+        a = new OnePixelOneChar(m_model->onePixelOneCharModel()->blackChar(), m_model->onePixelOneCharModel()->whiteChar());
+        break;
+    case Algorithmes::OnePixelMoneyChars:
+    default:
+        a = new OnePixelMoneyChars(m_model->onePixelMoneyCharsModel()->blackChars(), m_model->onePixelMoneyCharsModel()->whiteChars());
+        break;
+    }
+    m_model->setAsciiArt(a->run(m_model->modifedImg()));
+    delete a;
 }
 
 void Controller::setOnePixelOneCharWhiteChar(const QString &str){
@@ -35,6 +46,14 @@ void Controller::setOnePixelOneCharBlackChar(const QString &str){
 	if(ch.isNonCharacter())
 		return;
     m_model->onePixelOneCharModel()->setBlackChar(ch);
+}
+
+void Controller::setOnePixelMoneyCharsWhiteChars(const QString &ch){
+    m_model->onePixelMoneyCharsModel()->setWhiteChar(ch);
+}
+
+void Controller::setOnePixelMoneyCharsBlackChars(const QString &ch){
+    m_model->onePixelMoneyCharsModel()->setBlackChar(ch);
 }
 
 void Controller::setImage(const QString img){

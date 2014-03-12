@@ -1,11 +1,10 @@
 #include "onepixelonechar.h"
 #include <QtConcurrent/QtConcurrentRun>
 
-OnePixelOneChar::OnePixelOneChar(const QChar blackChar, const QChar whiteChar, int asciiArtWight, QObject *parent) :
+OnePixelOneChar::OnePixelOneChar(const QChar blackChar, const QChar whiteChar, QObject *parent) :
 	Algorithm(parent),
 	mBlackChar(blackChar),
-	mWhiteChar(whiteChar),
-	mAsciiArtWight(asciiArtWight)
+    mWhiteChar(whiteChar)
 {}
 
 QString OnePixelOneChar::run(const QImage &imgsrc) const{

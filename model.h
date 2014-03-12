@@ -3,6 +3,7 @@
 
 #include "algorithmes.h"
 #include "onepixelonecharmodel.h"
+#include "onepixelmoneycharsmodel.h"
 #include <QObject>
 #include <QImage>
 #include <QPixmap>
@@ -20,8 +21,9 @@ class Model : public QObject, public QQuickImageProvider
     Q_PROPERTY(QString modifedImgURI READ modifedImgURI NOTIFY modifedImgURIChanged)
     Q_PROPERTY(int modifedImgHeight READ modifedImgHeight NOTIFY modifedImgChanged)
     Q_PROPERTY(int modifedImgWidth READ modifedImgWidth NOTIFY modifedImgChanged)
-    Q_PROPERTY(int algorithm READ algorithm NOTIFY algorithmChanged)
+    Q_PROPERTY(Algorithmes::AlgorithmesEnum algorithm READ algorithm NOTIFY algorithmChanged)
     Q_PROPERTY(QObject* onePixelOneCharModel READ onePixelOneCharModel NOTIFY onePixelOneCharModelChanged)
+    Q_PROPERTY(QObject* onePixelMoneyCharsModel READ onePixelMoneyCharsModel NOTIFY onePixelMoneyCharsModelChanged)
 
 public:
     explicit Model(QObject *parent = 0);
@@ -45,9 +47,10 @@ public:
     int modifedImgWidth() const;
     int modifedImgHeight() const;
 
-    int algorithm() const;
+    Algorithmes::AlgorithmesEnum algorithm() const;
     void setAlgorithm(Algorithmes::AlgorithmesEnum value);
     OnePixelOneCharModel *onePixelOneCharModel();
+    OnePixelMoneyCharsModel *onePixelMoneyCharsModel();
 signals:
     void imageChanged();
     void asciiArtChanged();
@@ -55,6 +58,7 @@ signals:
     void modifedImgChanged();
     void algorithmChanged();
     void onePixelOneCharModelChanged();
+    void onePixelMoneyCharsModelChanged();
 
 public slots:
 private:
@@ -65,6 +69,7 @@ private:
     QString m_modifedImgURI;
     Algorithmes::AlgorithmesEnum mAlgorithm;
     OnePixelOneCharModel mOnePixelOneCharModel;
+    OnePixelMoneyCharsModel mOnePixelMoneyCharsModel;
 };
 
 #endif // MODEL_H

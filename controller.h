@@ -19,6 +19,8 @@ public:
 
     Q_INVOKABLE void setOnePixelOneCharWhiteChar(const QString &ch);
     Q_INVOKABLE void setOnePixelOneCharBlackChar(const QString &ch);
+    Q_INVOKABLE void setOnePixelMoneyCharsWhiteChars(const QString &ch);
+    Q_INVOKABLE void setOnePixelMoneyCharsBlackChars(const QString &ch);
 	/** Задать адрес файла картинки.*/
 	Q_INVOKABLE void setImage(const QString img);
 	/** Выбрать файл картинки.*/

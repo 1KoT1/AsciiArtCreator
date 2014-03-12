@@ -89,7 +89,7 @@ int Model::modifedImgHeight() const{
     return m_modifedImg.height();
 }
 
-int Model::algorithm() const{
+Algorithmes::AlgorithmesEnum Model::algorithm() const{
     return mAlgorithm;
 }
 
@@ -102,4 +102,8 @@ void Model::setAlgorithm(Algorithmes::AlgorithmesEnum value){
 
 OnePixelOneCharModel *Model::onePixelOneCharModel(){
     return &mOnePixelOneCharModel;
+}
+
+OnePixelMoneyCharsModel *Model::onePixelMoneyCharsModel(){
+    return &mOnePixelMoneyCharsModel;
 }
