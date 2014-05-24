@@ -1,10 +1,11 @@
 #include "model.h"
 #include <QCoreApplication>
+#include "tools.h"
 
 Model::Model(QObject *parent) :
     QObject(parent),
     QQuickImageProvider(QQuickImageProvider::Pixmap),
-    m_image("qml/AsciiArtGenirator/AsciiArtGenirator80.png"),
+		m_image(Tools::qmlResPath("AsciiArtGenirator80.png")),
     m_surceImg(QImage(m_image)),
     m_modifedImg(m_surceImg),
     m_modifedImgURI(QString("image://%0/%1").arg(gameModel).arg(modifedImgStr)),
