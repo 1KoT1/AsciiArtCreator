@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
+import AsciiArtGenirator 1.0
 
 Rectangle {
     width: 800
