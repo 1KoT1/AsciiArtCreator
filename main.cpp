@@ -16,10 +16,10 @@ int main(int argc, char *argv[])
 	QtQuick2ApplicationViewer viewer;
 	auto model = new Model(&app);
 	auto controller = new Controller(model, &app);
-//	controller->calcAsciiArt();
+	controller->calcAsciiArt();
 	viewer.engine()->addImageProvider(gameModel, model);
 	viewer.rootContext()->setContextProperty(gameModel, model);
-//	viewer.rootContext()->setContextProperty("controller", controller);
+	viewer.rootContext()->setContextProperty("controller", controller);
 	viewer.setMainQmlFile(QStringLiteral("qml/AsciiArtGenirator/main.qml"));
 	viewer.showExpanded();
 
