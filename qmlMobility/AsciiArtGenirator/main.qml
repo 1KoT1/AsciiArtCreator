@@ -111,7 +111,7 @@ Rectangle {
 
                 SpinBox{
                     id: mimgh
-                    anchors.right: mimgw.right
+                    width: 100
                     maximumValue: 1000
                     value: gameModel.modifedImgHeight
                     onValueChanged: {
