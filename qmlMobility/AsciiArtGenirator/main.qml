@@ -12,6 +12,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.bottom: controlPanel.top
+        anchors.bottomMargin: 5
         Rectangle{
             anchors.left: parent.left
             anchors.right: parent.right
@@ -33,7 +34,7 @@ Rectangle {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: parent.verticalCenter
-            height: width
+            anchors.bottom: parent.bottom
             text: gameModel.asciiArt;
             readOnly: true
             font.pixelSize: 12
