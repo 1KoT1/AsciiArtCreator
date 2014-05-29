@@ -7,6 +7,13 @@
 #include <QFont>
 #include <QFontMetrics>
 #include <QDebug>
+#include <QDesktopWidget>
+
+QString mainQml(){
+	QDesktopWidget desktop;
+	auto desktopGeometry = desktop.screenGeometry();
+	return desktopGeometry.height() > desktopGeometry.width() ? "qml/AsciiArtGenirator/mainVerticalDisplay.qml" : "qml/AsciiArtGenirator/mainHorizontalDisplay.qml";
+}
 
 int main(int argc, char *argv[])
 {
@@ -20,7 +27,7 @@ int main(int argc, char *argv[])
 	viewer.engine()->addImageProvider(gameModel, model);
 	viewer.rootContext()->setContextProperty(gameModel, model);
 	viewer.rootContext()->setContextProperty("controller", controller);
-	viewer.setMainQmlFile(QStringLiteral("qml/AsciiArtGenirator/main.qml"));
+	viewer.setMainQmlFile(mainQml());
 	viewer.showExpanded();
 
 	return app.exec();

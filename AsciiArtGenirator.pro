@@ -2,9 +2,7 @@ QMAKE_CXXFLAGS += -std=c++0x
 QT += widgets
 
 # Add more folders to ship with the application, here
-#folder_01.source = qml/AsciiArtGenirator
-android{folder_01.source = qmlMobility/AsciiArtGenirator}
-!android{folder_01.source = qml/AsciiArtGenirator}
+folder_01.source = qml/AsciiArtGenirator
 folder_01.target = qml
 DEPLOYMENTFOLDERS = folder_01
 
