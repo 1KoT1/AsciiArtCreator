@@ -19,7 +19,6 @@ Rectangle {
             anchors.top: parent.top
             anchors.bottom: parent.verticalCenter
             border.color: "black"
-            color: "red"
             Flickable{
                 anchors.fill: parent
                 Image{
