@@ -6,6 +6,7 @@
 #include <QFileDialog>
 #include <QApplication>
 #include <QPainter>
+#include <QtConcurrent/QtConcurrent>
 #include "onepixelonechar.h"
 #include "onepixelmoneychars.h"
 
@@ -16,18 +17,20 @@ Controller::Controller(Model * model, QObject *parent) :
 }
 
 void Controller::calcAsciiArt(){
-    Algorithm *a;
-    switch (m_model->algorithm()) {
-    case Algorithmes::OnePixelOneChar:
-        a = new OnePixelOneChar(m_model->onePixelOneCharModel()->blackChar(), m_model->onePixelOneCharModel()->whiteChar());
-        break;
-    case Algorithmes::OnePixelMoneyChars:
-    default:
-        a = new OnePixelMoneyChars(m_model->onePixelMoneyCharsModel()->blackChars(), m_model->onePixelMoneyCharsModel()->whiteChars());
-        break;
-    }
-    m_model->setAsciiArt(a->run(m_model->modifedImg()));
-    delete a;
+    QtConcurrent::run([&](){
+        Algorithm *a;
+        switch (m_model->algorithm()) {
+        case Algorithmes::OnePixelOneChar:
+            a = new OnePixelOneChar(m_model->onePixelOneCharModel()->blackChar(), m_model->onePixelOneCharModel()->whiteChar());
+            break;
+        case Algorithmes::OnePixelMoneyChars:
+        default:
+            a = new OnePixelMoneyChars(m_model->onePixelMoneyCharsModel()->blackChars(), m_model->onePixelMoneyCharsModel()->whiteChars());
+            break;
+        }
+        m_model->setAsciiArt(a->run(m_model->modifedImg()));
+        delete a;
+    });
 }
 
 void Controller::setOnePixelOneCharWhiteChar(const QString &str){
