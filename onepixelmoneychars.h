@@ -8,7 +8,6 @@ class OnePixelMoneyChars : public Algorithm{
 public:
     explicit OnePixelMoneyChars(const QString &blackChar, const QString &whiteChar, QObject *parent = 0);
     QString run(const QImage &img) const;
-    QFuture<QString> runAsinc(const QImage &img) const;
 signals:
 
 public slots:

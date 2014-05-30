@@ -21,7 +21,3 @@ QString OnePixelOneChar::run(const QImage &imgsrc) const{
     }
 	return res;
 }
-
-QFuture<QString> OnePixelOneChar::runAsinc(const QImage &img) const{
-	return QtConcurrent::run(this, &OnePixelOneChar::run, img);
-}

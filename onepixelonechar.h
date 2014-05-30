@@ -7,8 +7,7 @@ class OnePixelOneChar : public Algorithm{
 	Q_OBJECT
 public:
     explicit OnePixelOneChar(const QChar blackChar, const QChar whiteChar, QObject *parent = 0);
-	QString run(const QImage &img) const;
-	QFuture<QString> runAsinc(const QImage &img) const;
+    QString run(const QImage &img) const;
 signals:
 
 public slots:
