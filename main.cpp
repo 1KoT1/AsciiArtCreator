@@ -1,13 +1,10 @@
+#include "controller.h"
+#include "model.h"
 #include <QApplication>
+#include <QDesktopWidget>
 #include <QQmlContext>
 #include "qtquick2applicationviewer.h"
-#include "model.h"
-#include "controller.h"
 
-#include <QFont>
-#include <QFontMetrics>
-#include <QDebug>
-#include <QDesktopWidget>
 
 QString mainQml(){
 	QDesktopWidget desktop;
