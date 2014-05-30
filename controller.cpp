@@ -20,6 +20,7 @@ void Controller::calcAsciiArt(){
     if(calcAsciiArtIsRunning())
         return;
 
+    m_model->setCalcAsciiArtState(AlgorithmStates::Running);
     QtConcurrent::run([&](){
         Algorithm *a;
         switch (m_model->algorithm()) {
@@ -33,6 +34,7 @@ void Controller::calcAsciiArt(){
         }
         m_model->setAsciiArt(a->run(m_model->modifedImg()));
         delete a;
+        m_model->setCalcAsciiArtState(AlgorithmStates::Stoping);
     });
 }
 
