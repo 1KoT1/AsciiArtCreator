@@ -9,7 +9,8 @@ Model::Model(QObject *parent) :
     m_surceImg(QImage(m_image)),
     m_modifedImg(m_surceImg),
     m_modifedImgURI(QString("image://%0/%1").arg(gameModel).arg(modifedImgStr)),
-    mAlgorithm(Algorithmes::OnePixelOneChar)
+    mAlgorithm(Algorithmes::OnePixelOneChar),
+    mCalcAsciiArtState(AlgorithmStates::Stoping)
 {
 }
 
@@ -107,4 +108,15 @@ OnePixelOneCharModel *Model::onePixelOneCharModel(){
 
 OnePixelMoneyCharsModel *Model::onePixelMoneyCharsModel(){
     return &mOnePixelMoneyCharsModel;
+}
+
+AlgorithmStates::AlgorithmStateEnum Model::calcAsciiArtState() const{
+    return mCalcAsciiArtState;
+}
+
+void Model::setCalcAsciiArtState(AlgorithmStates::AlgorithmStateEnum state){
+    if(mCalcAsciiArtState != state){
+        mCalcAsciiArtState = state;
+        emit calcAsciiArtStateChanged();
+    }
 }

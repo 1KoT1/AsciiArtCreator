@@ -1,3 +1,4 @@
+#include "algorithmstate.h"
 #include "controller.h"
 #include "model.h"
 #include <QApplication>
@@ -16,7 +17,8 @@ int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
 
-	qmlRegisterType<Algorithmes>("AsciiArtGenirator", 1, 0, "Algorithmes");
+    qmlRegisterType<Algorithmes>("AsciiArtGenirator", 1, 0, "Algorithmes");
+    qmlRegisterType<AlgorithmStates>("AsciiArtGenirator", 1, 0, "AlgorithmState");
 	QtQuick2ApplicationViewer viewer;
 	auto model = new Model(&app);
 	auto controller = new Controller(model, &app);

@@ -2,6 +2,7 @@
 #define MODEL_H
 
 #include "algorithmes.h"
+#include "algorithmstate.h"
 #include "onepixelonecharmodel.h"
 #include "onepixelmoneycharsmodel.h"
 #include <QObject>
@@ -24,6 +25,7 @@ class Model : public QObject, public QQuickImageProvider
     Q_PROPERTY(Algorithmes::AlgorithmesEnum algorithm READ algorithm NOTIFY algorithmChanged)
     Q_PROPERTY(QObject* onePixelOneCharModel READ onePixelOneCharModel NOTIFY onePixelOneCharModelChanged)
     Q_PROPERTY(QObject* onePixelMoneyCharsModel READ onePixelMoneyCharsModel NOTIFY onePixelMoneyCharsModelChanged)
+    Q_PROPERTY(AlgorithmStates::AlgorithmStateEnum calcAsciiArtState READ calcAsciiArtState WRITE setCalcAsciiArtState NOTIFY calcAsciiArtStateChanged)
 
 public:
     explicit Model(QObject *parent = 0);
@@ -51,6 +53,9 @@ public:
     void setAlgorithm(Algorithmes::AlgorithmesEnum value);
     OnePixelOneCharModel *onePixelOneCharModel();
     OnePixelMoneyCharsModel *onePixelMoneyCharsModel();
+
+    AlgorithmStates::AlgorithmStateEnum calcAsciiArtState() const;
+    void setCalcAsciiArtState(AlgorithmStates::AlgorithmStateEnum state);
 signals:
     void imageChanged();
     void asciiArtChanged();
@@ -59,6 +64,7 @@ signals:
     void algorithmChanged();
     void onePixelOneCharModelChanged();
     void onePixelMoneyCharsModelChanged();
+    void calcAsciiArtStateChanged();
 
 public slots:
 private:
@@ -70,6 +76,7 @@ private:
     Algorithmes::AlgorithmesEnum mAlgorithm;
     OnePixelOneCharModel mOnePixelOneCharModel;
     OnePixelMoneyCharsModel mOnePixelMoneyCharsModel;
+    AlgorithmStates::AlgorithmStateEnum mCalcAsciiArtState;
 };
 
 #endif // MODEL_H

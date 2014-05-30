@@ -40,7 +40,8 @@ HEADERS += \
     onepixelmoneychars.h \
     onepixelonecharmodel.h \
     onepixelmoneycharsmodel.h \
-    tools.h
+    tools.h \
+    algorithmstate.h
 
 OTHER_FILES += \
     android/src/org/qtproject/qt5/android/bindings/QtActivity.java \

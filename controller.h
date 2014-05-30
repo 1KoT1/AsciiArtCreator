@@ -48,6 +48,7 @@ private:
 	Model * m_model;
 
     void modifImage(int newWidth, int newHeight);
+    bool calcAsciiArtIsRunning();
 };
 
 #endif // CONTROLLER_H
